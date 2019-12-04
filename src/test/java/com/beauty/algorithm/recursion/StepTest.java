@@ -16,6 +16,7 @@ public class StepTest {
         assertEquals(8, step.move(5));
     }
 
+    @Test
     public void simpleMove() {
         Step step = new Step();
         assertEquals(3, step.simpleMove(3));
