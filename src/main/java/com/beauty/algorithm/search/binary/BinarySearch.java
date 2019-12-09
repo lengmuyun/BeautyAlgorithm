@@ -10,7 +10,7 @@ public class BinarySearch implements Search {
         int high = n-1;
 
         while (low <= high) {
-            int mid = (low + high)/2;
+            int mid = low + ((high - low) >> 1);
             if (array[mid] == value) {
                 return mid;
             } else if (array[mid] > value) {
@@ -25,7 +25,7 @@ public class BinarySearch implements Search {
     public int binarySearch(int[] array, int low, int high, int value) {
         if (low > high) return -1;
 
-        int mid = low + (high - low) >> 1;
+        int mid = low + ((high - low) >> 1);
         if (array[mid] == value) {
             return mid;
         } else if (array[mid] > value) {
