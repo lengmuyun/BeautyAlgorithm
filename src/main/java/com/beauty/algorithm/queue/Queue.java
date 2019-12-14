@@ -15,4 +15,10 @@ public interface Queue<E> {
      */
     E dequeue();
 
+    /**
+     * 返回队列是否为空
+     * @return
+     */
+    boolean isEmpty();
+
 }

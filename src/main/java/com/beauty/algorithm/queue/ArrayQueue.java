@@ -37,4 +37,8 @@ public class ArrayQueue<E> implements Queue<E> {
         return item;
     }
 
+    public boolean isEmpty() {
+        return head == tail;
+    }
+
 }

@@ -28,4 +28,9 @@ public class CircularQueue<E> implements Queue<E> {
         return item;
     }
 
+    @Override
+    public boolean isEmpty() {
+        return head == tail;
+    }
+
 }
