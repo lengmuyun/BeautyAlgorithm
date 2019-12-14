@@ -32,4 +32,9 @@ public class ArrayBinaryTreeTest {
         assertEquals("D->E->B->F->G->C->A", binaryTree.postOrder());
     }
 
+    @Test
+    public void floorOrder() {
+        assertEquals("A->B->C->D->E->F->G", binaryTree.floorOrder());
+    }
+
 }

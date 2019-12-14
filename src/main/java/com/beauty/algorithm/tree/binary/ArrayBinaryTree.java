@@ -3,7 +3,7 @@ package com.beauty.algorithm.tree.binary;
 import com.beauty.algorithm.queue.ArrayQueue;
 import com.beauty.algorithm.queue.Queue;
 
-public class ArrayBinaryTree<E> implements BinaryTree {
+public class ArrayBinaryTree<E> implements BinaryTreeIterator {
 
     private Object[] data;
     private int index;
@@ -26,7 +26,6 @@ public class ArrayBinaryTree<E> implements BinaryTree {
     public String preOrder() {
         ArrayQueue<E> queue = new ArrayQueue<>(data.length - 1);
         preOrder(1, queue);
-        if (queue.isEmpty()) return null;
         return print(queue);
     }
 
@@ -42,7 +41,6 @@ public class ArrayBinaryTree<E> implements BinaryTree {
     public String inOrder() {
         Queue<E> queue = new ArrayQueue<>(data.length - 1);
         inOrder(1, queue);
-        if (queue.isEmpty()) return null;
         return print(queue);
     }
 
@@ -58,7 +56,6 @@ public class ArrayBinaryTree<E> implements BinaryTree {
     public String postOrder() {
         Queue<E> queue = new ArrayQueue<>(data.length - 1);
         postOrder(1, queue);
-        if (queue.isEmpty()) return null;
         return print(queue);
     }
 
@@ -71,6 +68,8 @@ public class ArrayBinaryTree<E> implements BinaryTree {
     }
 
     private String print(Queue<E> queue) {
+        if (queue.isEmpty()) return null;
+
         E element = queue.dequeue();
         StringBuilder sb = new StringBuilder();
         sb.append(element);
@@ -79,6 +78,26 @@ public class ArrayBinaryTree<E> implements BinaryTree {
             sb.append("->").append(queue.dequeue());
         }
         return sb.toString();
+    }
+
+    @Override
+    public String floorOrder() {
+        Queue<Integer> queue = new ArrayQueue<>(data.length - 1);
+        queue.enqueue(1);
+
+        Queue<E> printQueue = new ArrayQueue<>(data.length - 1);
+        while (!queue.isEmpty()) {
+            Integer index = queue.dequeue();
+            printQueue.enqueue((E) data[index]);
+
+            if (index * 2 <= data.length - 1) {
+                queue.enqueue(index * 2);
+            }
+            if (index * 2 + 1 <= data.length - 1) {
+                queue.enqueue(index * 2 + 1);
+            }
+        }
+        return print(printQueue);
     }
 
 }
