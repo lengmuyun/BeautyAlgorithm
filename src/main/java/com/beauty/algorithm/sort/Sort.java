@@ -1,5 +1,7 @@
 package com.beauty.algorithm.sort;
 
+import com.beauty.algorithm.util.ArrayUtil;
+
 public interface Sort {
 
     /**
@@ -10,9 +12,7 @@ public interface Sort {
     void sort(int[] array, int n);
 
     default void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        ArrayUtil.swap(array, i, j);
     }
 
 }
