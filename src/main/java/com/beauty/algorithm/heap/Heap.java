@@ -21,11 +21,11 @@ public class Heap {
         count = 0;
     }
 
-    public boolean insert(int data) {
+    public boolean add(int data) {
         if (count >= n) return false;
 
-        a[count + 1] = data;
         count++;
+        a[count] = data;
 
         // 自下而上堆化
         int i = count;
@@ -43,6 +43,17 @@ public class Heap {
         count--;
         heapify(a, count, 1);
         return true;
+    }
+
+    private static void heapify(int[] a, int n, int i) {
+        while (true) {
+            int maxPos = i;
+            if (i*2 <= n && a[i] < a[i*2]) maxPos = i*2;
+            if (i*2+1 <= n && a[maxPos] < a[i*2+1]) maxPos = i*2+1;
+            if (maxPos == i) break;
+            swap(a, i, maxPos);
+            i = maxPos;
+        }
     }
 
     /**
@@ -77,16 +88,16 @@ public class Heap {
         }
     }
 
-    private static void heapify(int[] a, int n, int i) {
-        while (true) {
-            int maxPos = i;
-            if (i*2 <= n && a[i] < a[i*2]) maxPos = i*2;
-            if (i*2+1 <= n && a[maxPos] < a[i*2+1]) maxPos = i*2+1;
-            if (maxPos == i) break;
-            swap(a, i, maxPos);
-            i = maxPos;
-        }
-    }
+//    private static void heapify(int[] a, int n, int i) {
+//        while (true) {
+//            int maxPos = i;
+//            if (i*2 <= n && a[i] < a[i*2]) maxPos = i*2;
+//            if (i*2+1 <= n && a[maxPos] < a[i*2+1]) maxPos = i*2+1;
+//            if (maxPos == i) break;
+//            swap(a, i, maxPos);
+//            i = maxPos;
+//        }
+//    }
 
 
     // n表示数据的个数，数组a中的数据从下标1到n的位置。

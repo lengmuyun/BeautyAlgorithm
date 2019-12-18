@@ -3,8 +3,6 @@ package com.beauty.algorithm.heap;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
 public class HeapTest {
@@ -14,14 +12,14 @@ public class HeapTest {
     @Before
     public void initialize() {
         heap = new Heap(8);
-        heap.insert(10);
-        heap.insert(9);
-        heap.insert(8);
-        heap.insert(6);
-        heap.insert(5);
-        heap.insert(7);
-        heap.insert(4);
-        heap.insert(3);
+        heap.add(10);
+        heap.add(9);
+        heap.add(8);
+        heap.add(6);
+        heap.add(5);
+        heap.add(7);
+        heap.add(4);
+        heap.add(3);
     }
 
     @Test
