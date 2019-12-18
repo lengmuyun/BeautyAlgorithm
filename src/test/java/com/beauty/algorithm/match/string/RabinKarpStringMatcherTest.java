@@ -19,9 +19,9 @@ public class RabinKarpStringMatcherTest {
     @Test
     public void buildHash() {
         RabinKarpStringMatcher stringMatcher = new RabinKarpStringMatcher();
-        assertEquals(Arrays.toString(new int[] { 0, 1, 2, 3 }), Arrays.toString(stringMatcher.buildHash("abcd", 4, 1)));
-        assertEquals(Arrays.toString(new int[] { 1, 28, 55 }), Arrays.toString(stringMatcher.buildHash("abcd", 4, 2)));
-        assertEquals(Arrays.toString(new int[] { 731, 1434, 2137 }), Arrays.toString(stringMatcher.buildHash("bcdef", 5, 3)));
+        assertEquals(Arrays.toString(new int[] { 0, 1, 2, 3 }), Arrays.toString(stringMatcher.buildHash("abcd", 1)));
+        assertEquals(Arrays.toString(new int[] { 1, 28, 55 }), Arrays.toString(stringMatcher.buildHash("abcd", 2)));
+        assertEquals(Arrays.toString(new int[] { 731, 1434, 2137 }), Arrays.toString(stringMatcher.buildHash("bcdef", 3)));
     }
 
 }

@@ -5,6 +5,9 @@ package com.beauty.algorithm.match.string;
  */
 public class RabinKarpStringMatcher implements StringMatcher {
 
+    /**
+     * 缓存进制值，个位数*bitValue[0]，十位*bitValue[1]
+     */
     public static final int[] bitValue = new int[10];
 
     static {
@@ -24,8 +27,8 @@ public class RabinKarpStringMatcher implements StringMatcher {
     public int match(String main, String pattern) {
         if (main.length() < pattern.length()) return -1;
 
-        int m = main.length(), p = pattern.length();
-        int[] indexToHash = buildHash(main, m, p);
+        int p = pattern.length();
+        int[] indexToHash = buildHash(main, p);
         int patternHash = hash(pattern, 0, p);
         for (int i=0; i<indexToHash.length; i++) {
             if (patternHash == indexToHash[i]) {
@@ -37,7 +40,14 @@ public class RabinKarpStringMatcher implements StringMatcher {
         return -1;
     }
 
-    public int[] buildHash(String main, int m, int p) {
+    /**
+     * 构建主串中0,...,m-n个匹配的字符串的hash值
+     * @param main 主串
+     * @param p 模式串的长度
+     * @return
+     */
+    public int[] buildHash(String main, int p) {
+        int m = main.length();
         int[] indexToHash = new int[m-p+1];
         int previousHash = hash(main, 0, p);
         indexToHash[0] = previousHash;
@@ -49,10 +59,17 @@ public class RabinKarpStringMatcher implements StringMatcher {
         return indexToHash;
     }
 
-    public int hash(String main, int startIndex, int length) {
+    /**
+     * 从字符串起始索引startIndex，长度为length计算hash值
+     * @param s
+     * @param startIndex
+     * @param length
+     * @return
+     */
+    public int hash(String s, int startIndex, int length) {
         int hashVal = 0;
         for (int i=0; i<length; i++) {
-            hashVal += bitValue[length-i-1]*(main.charAt(startIndex+i) - 'a');
+            hashVal += bitValue[length-i-1]*(s.charAt(startIndex+i) - 'a');
         }
         return hashVal;
     }
