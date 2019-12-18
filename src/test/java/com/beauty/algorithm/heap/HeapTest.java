@@ -39,4 +39,11 @@ public class HeapTest {
         assertEquals("[7, 6, 4, 3, 5]", heap.toString());
     }
 
+    @Test
+    public void testBuild() {
+        int[] a = { 0, 5, 7, 6, 4, 2, 1 };
+        Heap of = Heap.of(a, 6);
+        assertEquals("[7, 5, 6, 4, 2, 1]", of.toString());
+    }
+
 }

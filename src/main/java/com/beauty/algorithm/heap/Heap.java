@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 import static com.beauty.algorithm.util.ArrayUtil.swap;
 
+/**
+ * 大顶堆
+ */
 public class Heap {
 
     /** 数组，从下标1开始存储数据 */
@@ -19,6 +22,11 @@ public class Heap {
         this.a = new int[capacity + 1];
         this.n = capacity;
         count = 0;
+    }
+
+    private Heap(int[] a, int n) {
+        this.a = a;
+        this.n = n;
     }
 
     public boolean add(int data) {
@@ -45,6 +53,37 @@ public class Heap {
         return true;
     }
 
+    @Override
+    public String toString() {
+        int[] toString = new int[count];
+        System.arraycopy(a, 1, toString, 0, count);
+        return Arrays.toString(toString);
+    }
+
+    /**
+     * 数组中1-n存储数据
+     * @param a
+     * @param n
+     */
+    public static Heap of(int[] a, int n) {
+        Heap heap = new Heap(a, n);
+        heap.rebuild();
+        return heap;
+    }
+
+    private void rebuild() {
+        this.count = 1;
+        for (int i=2; i<a.length; i++) {
+            add(a[i]);
+        }
+    }
+
+    private static void buildHeap(int[] a, int n) {
+        for (int i = n/2; i >= 1; --i) {
+            heapify(a, n, i);
+        }
+    }
+
     private static void heapify(int[] a, int n, int i) {
         while (true) {
             int maxPos = i;
@@ -55,49 +94,6 @@ public class Heap {
             i = maxPos;
         }
     }
-
-    /**
-     * 自己写的堆化，感觉有bug
-     */
-    @Deprecated
-    private void heapifySelf() {
-        // 自上而下堆化
-        int i=1;
-        while (i <= count/2) {
-            if (a[i*2] > a[i*2+1]) {
-                swap(a, i, i*2);
-                i = i*2;
-            } else {
-                swap(a, i, i*2+1);
-                i = i*2+1;
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        int[] toString = new int[count];
-        System.arraycopy(a, 1, toString, 0, count);
-        return Arrays.toString(toString);
-    }
-
-
-    private static void buildHeap(int[] a, int n) {
-        for (int i = n/2; i >= 1; --i) {
-            heapify(a, n, i);
-        }
-    }
-
-//    private static void heapify(int[] a, int n, int i) {
-//        while (true) {
-//            int maxPos = i;
-//            if (i*2 <= n && a[i] < a[i*2]) maxPos = i*2;
-//            if (i*2+1 <= n && a[maxPos] < a[i*2+1]) maxPos = i*2+1;
-//            if (maxPos == i) break;
-//            swap(a, i, maxPos);
-//            i = maxPos;
-//        }
-//    }
 
 
     // n表示数据的个数，数组a中的数据从下标1到n的位置。
