@@ -15,10 +15,10 @@ public class MergeSort {
         int q = (p+r)/2;
         mergeSortCounting(a, p, q);
         mergeSortCounting(a, q+1, r);
-        mergeSort(a, p, q, r);
+        merge(a, p, q, r);
     }
 
-    private void mergeSort(int[] a, int p, int q, int r) {
+    private void merge(int[] a, int p, int q, int r) {
         int i=p, j=q+1, k=0;
         int[] tmp = new int[r-q+1];
         while (i<=q && j<=r) {
