@@ -6,16 +6,10 @@ import java.util.Queue;
 /**
  * 无向图
  */
-public class Graph {
+public class Graph extends AbstractGraph {
 
-    private int v;
-    private LinkedList<Integer> adj[];
     public Graph(int v) {
-        this.v = v;
-        adj = new LinkedList[v];
-        for (int i=0; i<v; ++i) {
-            adj[i] = new LinkedList<>();
-        }
+        super(v);
     }
 
     boolean found = false;
