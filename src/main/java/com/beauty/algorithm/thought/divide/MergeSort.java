@@ -1,4 +1,4 @@
-package com.beauty.algorithm.divide;
+package com.beauty.algorithm.thought.divide;
 
 public class MergeSort {
 

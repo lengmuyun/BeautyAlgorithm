@@ -1,5 +1,6 @@
 package com.beauty.algorithm.dynamic;
 
+import com.beauty.algorithm.thought.dynamic.ZeroOneBagUpgrade;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

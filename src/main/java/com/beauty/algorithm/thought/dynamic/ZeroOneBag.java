@@ -1,4 +1,4 @@
-package com.beauty.algorithm.dynamic;
+package com.beauty.algorithm.thought.dynamic;
 
 public class ZeroOneBag {
 
