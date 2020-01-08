@@ -57,9 +57,6 @@ public class BinarySearchTree {
             else p = p.left;
         }
         if (p == null) return;
-
-
-
     }
 
     public static class Node {

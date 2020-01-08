@@ -16,6 +16,12 @@ public class StringMatcherTest {
         match(new RabinKarpStringMatcher());
     }
 
+    @Test
+    public void bmMatch() {
+        StringMatcher bm = new BoyerMooreStringMatcher();
+        assertEquals(5, bm.match("abcacabdc", "abd"));
+    }
+
     private void match(StringMatcher stringMatcher) {
         assertEquals(-1, stringMatcher.match("a", "de"));
         assertEquals(-1, stringMatcher.match("ab", "de"));
